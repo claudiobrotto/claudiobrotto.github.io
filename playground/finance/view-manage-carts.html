@@ -1,0 +1,10 @@
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Manage Lists</h1>
+</div>
+
+<button class="btn btn-primary" ng-click="ctrl.saveToStorage()">Save</button>
+<button class="btn btn-primary" ng-click="ctrl.loadFromStorage()">Load</button>
+
+<div dx-data-grid="ctrl.getGridOptions()">
+</div>

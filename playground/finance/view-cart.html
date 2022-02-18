@@ -1,0 +1,30 @@
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">{{cartsState.currentCart.name}}</h1>
+</div>
+
+<!-- Content Row -->
+<div class="row">
+    <div dx-data-grid="ctrl.getCartListSettings()" dx-item-alias="stock">
+        <div data-options="dxTemplate: { name: 'details'}">
+            <div dx-tab-panel="ctrl.getDetailsTabPanelOptions(stock.data)" dx-item-alias="tab">
+                <div data-options="dxTemplate: { name: 'jeDetails'}">
+                    <div dx-data-grid="ctrl.getJEDetailsGridSettings(stock.data)"></div>
+                </div>
+                <div data-options="dxTemplate: { name: 'msDetails'}">
+                    <div dx-data-grid="ctrl.getMSDetailsGridSettings(stock.data)"></div>
+                </div>
+                <div data-options="dxTemplate: { name: 'biDetails'}">
+                    <div dx-data-grid="ctrl.getBIDetailsGridSettings(stock.data)"></div>
+                </div>
+                <div data-options="dxTemplate: { name: 'dividendsDetails'}">
+                    <div dx-data-grid="ctrl.getDividendsDetailsGridSettings(stock.data)"></div>
+                </div>
+                <div data-options="dxTemplate: { name: 'chartsDetails'}">
+                    <div dx-range-selector="ctrl.getChartRangeDetails(stock.data)"></div>
+                    <div dx-chart="ctrl.getChartQuotationsDetails(stock.data)"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,118 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, 'Trebuchet MS', Verdana;
+    height: 100%;
+    width: 100%;
+    min-width: 1024px;
+    min-height: 748px;
+    background-color:#efefef;
+}
+
+header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-width: 1024px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.logo, .panel {
+    display: inline-block;
+}
+
+.logo {
+    background-image: url('../img/logoStockMarket.png');
+    background-repeat: no-repeat;
+    background-size: 175px 48px;
+    width: 175px;
+    height: 50px;
+    margin-left: 20px;
+}
+
+.main {
+    padding: 72px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color:#efefef;
+}
+
+.left-side, .right-side {
+    /* height: 100%; */
+    background-color: #fff;
+    border: 1px solid #cfcfcf;
+    border-radius: 1px;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.1);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#heading {
+    margin-bottom: 10px;
+}
+
+#heading h2 {
+    color: #5d5d5d;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0;
+}
+
+.left-side {
+    width: 535px;
+    float: left;
+    color: #848484;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+
+.right-side {
+    margin-left: 550px;
+}
+
+.master-detail-caption {
+    padding-top: 10px;
+    padding-bottom: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.dx-datagrid {
+    font-size: 12px!important;
+}
+
+.left-side-show-both {
+    display: block;
+    float: left;
+    width: 535px;
+}
+
+.right-side-show-both {
+    display: block;
+    margin-left: 550px;
+}
+
+.right-side-show-only {
+    display: block;
+    margin-left: 0px;
+}
+
+.left-side-show-only {
+    display: block;
+    width: 100%;
+    float: none;
+}
+
+.left-side-hide, .right-side-hide {
+    display: none;
+}
+
+.toolbar {
+    height: 100px;
+    float: right;
+    padding-right: 72px;
+}

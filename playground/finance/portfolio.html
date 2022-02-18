@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>ETF List</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write(decodeURIComponent('%3Cscript src="js/jquery.min.js"%3E%3C/script%3E'))</script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/19.2.5/css/dx.common.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/19.2.5/css/dx.light.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.2/jszip.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+    <script src="https://cdn3.devexpress.com/jslib/19.2.5/js/dx.all.js"></script>
+    <script src="dist/config.js"></script>
+    <script src="dist/cache-service.js"></script>
+    <script src="dist/stock-service.js"></script>
+    <script src="dist/cart-service.js"></script>
+    <script src="dist/list-controller.js"></script>
+    <script src="dist/app.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+</head>
+
+<body class="dx-viewport" ng-app="myportfolio" ng-controller="list as ctrl">
+    <header>
+        <div class="logo"></div>
+        <div class="toolbar">
+            <button type="button" class="btn" ng-class="cartVisible ? 'btn-primary' : 'btn-light'" ng-click="ctrl.toggleCart()" ng-cloak>
+                Watch List ({{currentCartItems.length}} item(s))
+            </button>
+            <button type="button" class="btn" ng-class="listVisible ? 'btn-primary' : 'btn-light'" ng-click="ctrl.toggleList()" ng-cloak>
+                Full List ({{stocks.length}} item(s))
+            </button>
+        </div>
+    </header>
+    <section class="main">
+        <section class="left-side" ng-class="cssCart">
+            <div id="heading">
+                <h2>Watch Lists</h2>
+            </div>
+            <div dx-select-box="ctrl.getCartDropDownSettings()"></div>
+            <div dx-text-box="{
+                'bindingOptions': {
+                    'value': 'newCartName'
+                }
+            }"></div>
+            <button type="button" class="btn btn-primary" ng-click="ctrl.addCart()" ng-cloak>
+                Add Wish List
+            </button>
+            <div id="heading">
+                <h2>Selected stocks</h2>
+            </div>
+            <div dx-data-grid="ctrl.getCartListSettings()">
+            </div>
+        </section>
+        <section class="right-side" ng-class="cssList">
+            <div id="heading">
+                <h2>All</h2>
+            </div>
+            <div id="gridContainer" dx-data-grid="ctrl.getStockListSettings()" dx-item-alias="stock">
+                <div data-options="dxTemplate: { name: 'details'}">
+                    <div class="container">
+                        <div class="row">
+                            <div dx-tab-panel="ctrl.getDetailsTabPanelOptions(stock.data)" dx-item-alias="tab">
+                                <div data-options="dxTemplate: { name: 'jeDetails'}">
+                                    <div dx-data-grid="ctrl.getJEDetailsGridSettings(stock.data)"></div>
+                                </div>
+                                <div data-options="dxTemplate: { name: 'msDetails'}">
+                                    <div dx-data-grid="ctrl.getMSDetailsGridSettings(stock.data)"></div>
+                                </div>
+                                <div data-options="dxTemplate: { name: 'biDetails'}">
+                                    <div dx-data-grid="ctrl.getBIDetailsGridSettings(stock.data)"></div>
+                                </div>
+                                <div data-options="dxTemplate: { name: 'dividendsDetails'}">
+                                    <div dx-data-grid="ctrl.getDividendsDetailsGridSettings(stock.data)"></div>
+                                </div>
+                                <div data-options="dxTemplate: { name: 'chartsDetails'}">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                <div dx-bar-gauge="ctrl.getGaugeReturnDetails(stock.data)"></div>
+                                            </div>
+                                            <div class="col-sm">
+                                                <div dx-bar-gauge="ctrl.getGaugeReturnDetails(stock.data)"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                <div dx-chart="ctrl.getChartDetails(stock.data)"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+</body>
+
+</html>
