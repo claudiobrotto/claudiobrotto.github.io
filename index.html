@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>INT 3</title>
 	<style type="text/css">
+		html {
+			background: black;
+			height: 100%;
+			overflow: hidden;
+		}
+
 		body {
-			background-image: url('int3.png');
-			background-repeat: no-repeat;
-  			background-attachment: fixed;
-  			background-size: 100% 100%;
+			margin: 0;
+			height: 100%;
 		}
 	</style>
 </head>
-<body>
 
+<body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js"></script>
+	<script>"use strict";var streams;function setup(){createCanvas(innerWidth,innerHeight),textFont("monospace",16),colorMode(HSL),streams=Streams()}function draw(){background(0,0,0,.6),streams.draw()}function Streams(){for(var r=[],n=0;n<innerWidth/textSize();n++){var t=Stream(n*textSize(),round(random(-1e3,0)),round(random(3,7)),round(random(1,innerHeight/textSize())));r.push(t)}return{draw:function(){for(var n=0,t=r.length;n<t;n++)r[n].draw()}}}function Stream(r,n,t,e){for(var a=[],i=0;i<e;i++){var o=_Symbol(r,n,t,round(random(20,40)),[120,100,0===i?100*(1-i/e):1===i?95*(1-i/e):2===i?90*(1-i/e):50*(1-i/e)]);a.push(o),n-=textSize()}return{draw:function(){for(var r=0,n=a.length;r<n;r++)a[r].draw()}}}function _Symbol(r,n,t,e,a){var i;return{draw:function(){frameCount%e!=0&&i||(i="c"),n=n>height+textSize()?0:n+t,fill(a),text(i,r,n)}}}function windowResized(){resizeCanvas(innerWidth,innerHeight),streams=Streams()}</script>
 </body>
+
 </html>
